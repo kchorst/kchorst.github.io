@@ -251,6 +251,32 @@
     footer a { color: var(--teal-lt); transition: color 0.2s; }
     footer a:hover { color: white; }
 
+    /* CONTACT FORM */
+    .contact-form { display: grid; gap: 1rem; max-width: 560px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      font-family: var(--font); font-size: 0.9rem;
+      background: var(--bg-card2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--teal); }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--text-dim); }
+    .form-msg {
+      font-size: 0.85rem; padding: 0.6rem 1rem;
+      border-radius: var(--r); display: none;
+    }
+    .form-msg.success { display: block; color: var(--green); background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); }
+    .form-msg.error   { display: block; color: var(--amber); background: rgba(244,162,97,0.1);  border: 1px solid rgba(244,162,97,0.25); }
+
     @media (max-width: 640px) {
       .hero-top { flex-direction: column-reverse; }
       .how-grid { grid-template-columns: 1fr; }
@@ -271,6 +297,7 @@
       <div class="nav-right">
         <a href="#projects">Projects</a>
         <a href="#how">How I Work</a>
+        <a href="#contact">Contact</a>
         <a href="https://kchorst.com" class="nav-badge">kchorst.com ↗</a>
       </div>
     </div>
@@ -436,6 +463,18 @@ Chrome Extension workflow:
                                              ↘ side_panel UI</div>
     </section>
 
+    <!-- CONTACT -->
+    <section id="contact">
+      <span class="section-label">Contact</span>
+      <h2>Get in touch</h2>
+      <form class="contact-form" action="https://formspree.io/f/mdavpbpd" method="POST">
+        <input type="text"  name="name"    placeholder="Name"    autocomplete="name"  required />
+        <input type="email" name="email"   placeholder="Email"   autocomplete="email" required />
+        <textarea           name="message" placeholder="Message"                      required></textarea>
+        <button type="submit" class="btn btn-teal">Send message</button>
+      </form>
+    </section>
+
     <!-- FOOTER -->
     <footer>
       <p>
@@ -448,5 +487,6 @@ Chrome Extension workflow:
     </footer>
 
   </div>
+
 </body>
 </html>
