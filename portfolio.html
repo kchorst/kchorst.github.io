@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Chorst — Technical Portfolio</title>
+  <meta name="description" content="Builder of AI tools, Chrome extensions, and local LLM workflows. Technical portfolio for developers and hiring managers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:     #1A1A2E;
+      --navy-mid: #2A2A4A;
+      --teal:     #2E86AB;
+      --teal-lt:  #5BA4C4;
+      --amber:    #F4A261;
+      --bg:       #0F0F1E;
+      --bg-card:  #1A1A2E;
+      --bg-card2: #1E1E34;
+      --text:     #C8D8E8;
+      --text-dim: #6A86A0;
+      --border:   rgba(46,134,171,0.2);
+      --green:    #4ADE80;
+      --font:     'Outfit', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+      --r:        10px;
+      --r-pill:   999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { line-height: 1.2; }
+
+    /* LAYOUT */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(15,15,30,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 1rem; color: white; letter-spacing: -0.02em;
+    }
+    .nav-brand span { color: var(--amber); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-right a {
+      font-size: 0.85rem; color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--text); }
+    .nav-badge {
+      font-size: 0.78rem; font-weight: 600;
+      background: var(--teal); color: white;
+      padding: 0.25rem 0.7rem; border-radius: var(--r-pill);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .status-dot {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; color: var(--green);
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      padding: 0.3rem 0.8rem; border-radius: var(--r-pill);
+      flex-shrink: 0;
+    }
+    .status-dot::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; color: white;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }
+    h1 em { font-style: normal; color: var(--amber); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--text-dim);
+      max-width: 55ch; margin-bottom: 2rem; line-height: 1.7;
+    }
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      font-family: var(--font); font-size: 0.875rem; font-weight: 600;
+      padding: 0.55rem 1.1rem; border-radius: var(--r-pill);
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      border: none; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); color: white; }
+    .btn-teal:hover { background: var(--teal-lt); }
+    .btn-ghost {
+      background: transparent; color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--teal); }
+
+    /* STACK BAR */
+    .stack-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      padding: 1.5rem 0; border-top: 1px solid var(--border);
+    }
+    .stack-tag {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      color: var(--teal-lt);
+      background: rgba(46,134,171,0.1);
+      border: 1px solid rgba(46,134,171,0.25);
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1.25rem; display: block;
+    }
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700; color: white;
+      margin-bottom: 1.5rem; letter-spacing: -0.015em;
+    }
+
+    /* PROJECT CARDS */
+    .projects { display: grid; gap: 1rem; }
+    .project {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1rem;
+      align-items: start;
+    }
+    .project:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 24px rgba(46,134,171,0.12);
+    }
+    .project-meta { grid-column: 1; }
+    .project-link-col { grid-column: 2; padding-top: 0.2rem; }
+    .project h3 {
+      font-size: 1.05rem; color: white; margin-bottom: 0.4rem;
+    }
+    .project p {
+      font-size: 0.9rem; color: var(--text-dim); line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tags span {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.04);
+      padding: 0.15rem 0.5rem; border-radius: 4px;
+    }
+    .project-status {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: var(--r-pill);
+      white-space: nowrap;
+    }
+    .status-active {
+      color: var(--green); background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+    }
+    .status-wip {
+      color: var(--amber); background: rgba(244,162,97,0.1);
+      border: 1px solid rgba(244,162,97,0.25);
+    }
+    .project-gh {
+      display: inline-flex; align-items: center; gap: 0.35em;
+      font-size: 0.78rem; color: var(--text-dim); margin-top: 0.5rem;
+      transition: color 0.2s;
+    }
+    .project-gh:hover { color: white; }
+
+    /* HOW I WORK */
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .how-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+    }
+    .how-card h3 {
+      font-size: 0.95rem; color: white; margin-bottom: 0.5rem;
+    }
+    .how-card p {
+      font-size: 0.875rem; color: var(--text-dim); line-height: 1.65;
+    }
+    .how-card code {
+      font-family: var(--mono); font-size: 0.8rem;
+      color: var(--teal-lt);
+      background: rgba(46,134,171,0.1);
+      padding: 0.1em 0.4em; border-radius: 3px;
+    }
+
+    /* LOCAL STACK DIAGRAM */
+    .stack-diagram {
+      font-family: var(--mono); font-size: 0.8rem;
+      color: var(--teal-lt);
+      background: rgba(46,134,171,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+      line-height: 2;
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: 1.25rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+    }
+    footer p { font-size: 0.8rem; color: var(--text-dim); }
+    footer a { color: var(--teal-lt); transition: color 0.2s; }
+    footer a:hover { color: white; }
+
+    @media (max-width: 640px) {
+      .hero-top { flex-direction: column-reverse; }
+      .how-grid { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .project-link-col { grid-column: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap nav-inner">
+      <a href="#" class="nav-brand">kchorst<span>.github.io</span></a>
+      <div class="nav-right">
+        <a href="#projects">Projects</a>
+        <a href="#how">How I Work</a>
+        <a href="https://kchorst.com" class="nav-badge">kchorst.com ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <h1>Kevin Chorst<br /><em>Builder. Tinkerer.</em></h1>
+        </div>
+        <span class="status-dot">Open to work</span>
+      </div>
+      <p class="hero-sub">
+        I build AI tools, Chrome extensions, local LLM workflows, and language apps. 
+        Based in the Tri-Cities, WA. Interested in Developer Advocate, AI implementation, 
+        and tooling roles.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/kchorst" class="btn btn-teal" target="_blank" rel="noopener">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub Profile
+        </a>
+        <a href="https://kchorst.com" class="btn btn-ghost">kchorst.com →</a>
+        <a href="https://linkedin.com/in/kchorst" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="stack-bar">
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">Chrome Extensions</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">React Native</span>
+        <span class="stack-tag">Ollama</span>
+        <span class="stack-tag">llama.cpp</span>
+        <span class="stack-tag">Google Apps Script</span>
+        <span class="stack-tag">VS Code + Continue</span>
+        <span class="stack-tag">Prompt Engineering</span>
+        <span class="stack-tag">Vercel</span>
+        <span class="stack-tag">GitHub Pages</span>
+        <span class="stack-tag">HTML/CSS</span>
+      </div>
+    </header>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <span class="section-label">Projects</span>
+      <h2>Things I've shipped</h2>
+      <div class="projects">
+
+        <div class="project">
+          <div class="project-meta">
+            <h3>AI Chat Navigator</h3>
+            <p>Chrome side-panel extension that scrapes and organizes conversation history across Claude, Gemini, and Perplexity. Merge-on-save caching, working scrapers for all three platforms, and a Chat Distiller feature in active development (two-tier distillation, new-tab prefill).</p>
+            <div class="project-tags">
+              <span>Chrome Extension API</span><span>MV3</span><span>Side Panel</span><span>DOM scraping</span><span>JS</span>
+            </div>
+            <a href="https://github.com/kchorst/Ai-Chat-Navigator" class="project-gh" target="_blank" rel="noopener">
+              ↗ kchorst/Ai-Chat-Navigator
+            </a>
+          </div>
+          <div class="project-link-col">
+            <span class="project-status status-active">Active</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-meta">
+            <h3>Textify</h3>
+            <p>Chrome extension that converts webpage images to ASCII art in-place. Resolved a Chrome storage quota bug by switching from raw pixel array storage to JPEG data URL compression — a 40-80× size reduction per image.</p>
+            <div class="project-tags">
+              <span>Chrome Extension API</span><span>Canvas API</span><span>MV3</span><span>JS</span>
+            </div>
+          </div>
+          <div class="project-link-col">
+            <span class="project-status status-wip">In progress</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-meta">
+            <h3>TPS Meter</h3>
+            <p>Chrome/Edge extension for benchmarking local LLM throughput against Ollama and LM Studio. Tabs for live benchmark, RAG stress test, model comparison, history, and cloud backends (Anthropic, OpenAI).</p>
+            <div class="project-tags">
+              <span>Chrome Extension</span><span>Ollama API</span><span>LM Studio</span><span>JS</span>
+            </div>
+            <a href="https://github.com/kchorst/tps-meter" class="project-gh" target="_blank" rel="noopener">
+              ↗ kchorst/tps-meter
+            </a>
+          </div>
+          <div class="project-link-col">
+            <span class="project-status status-active">Active</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-meta">
+            <h3>ModelForge</h3>
+            <p>Python tool for managing Ollama Modelfiles. GUI (CustomTkinter) and TUI (Textual) frontends share a common core library. Features radar chart tradeoff analysis, preset profiles, version management, and live TPS benchmarking.</p>
+            <div class="project-tags">
+              <span>Python</span><span>CustomTkinter</span><span>Textual</span><span>Ollama</span>
+            </div>
+          </div>
+          <div class="project-link-col">
+            <span class="project-status status-wip">In progress</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-meta">
+            <h3>Multilingual Learning Apps</h3>
+            <p>Expo/React Native Web apps for kanji, phonetic alphabets, and general language learning — deployed as PWAs on Vercel. Backed by Google Apps Script email systems (Kanji of the Day, Letter of the Day, Phrase of the Day) serving daily dispatches across multiple writing systems including Japanese, Armenian, and Cyrillic with extensible script configs.</p>
+            <div class="project-tags">
+              <span>React Native</span><span>Expo</span><span>Vercel</span><span>Google Apps Script</span><span>LockService</span>
+            </div>
+            <a href="https://github.com/kchorst/kanji-web" class="project-gh" target="_blank" rel="noopener">
+              ↗ kchorst/kanji-web
+            </a>
+          </div>
+          <div class="project-link-col">
+            <span class="project-status status-active">Live</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section id="how">
+      <span class="section-label">How I Work</span>
+      <h2>Stack and process</h2>
+      <div class="how-grid">
+
+        <div class="how-card">
+          <h3>Local AI Development</h3>
+          <p>16GB RAM, no-GPU laptop running <code>llama-server</code> with Qwen 2.5 Coder 7B. Connected to Continue in VS Code. Local 7B handles mechanical coding; Claude (browser) handles planning and architecture. Tested LAN and Tailscale connections for mobile-to-llama-server workflows.</p>
+        </div>
+
+        <div class="how-card">
+          <h3>Prompt Engineering</h3>
+          <p>I think of prompts as specs, not requests. I use XML-tagged context blocks, explicit negative examples, and tiered outputs (e.g. two-tier distillation models). Most of my extension features start as a written spec before a line of code.</p>
+        </div>
+
+        <div class="how-card">
+          <h3>Chrome Extension Architecture</h3>
+          <p>All recent extensions use Manifest V3 with <code>chrome.storage.local</code>, service workers, and where applicable, side panels. I've navigated the MV3 migration constraints around content scripts, CORS, and background persistence.</p>
+        </div>
+
+        <div class="how-card">
+          <h3>Curriculum Design</h3>
+          <p>Designed a full vocational tech course for 8 high school students around gap/fill discovery pedagogy — no instructions, only objects and problems. Tracks: web server, LLM, music production, IoT. Capstone: video deliverable. LLM access was earned, not given.</p>
+        </div>
+
+      </div>
+
+      <div class="stack-diagram">VS Code
+ └── Continue (v1 YAML config)
+      └── llama-server  ←→  Qwen 2.5 Coder 7B (local)
+           └── LAN / Tailscale  ←→  mobile browser
+
+Chrome Extension workflow:
+ content_script → background service worker → chrome.storage.local
+                                             ↘ side_panel UI</div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <a href="https://kchorst.com">kchorst.com</a> ·
+        <a href="https://github.com/kchorst" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://linkedin.com/in/kchorst" target="_blank" rel="noopener">LinkedIn</a>
+        <br /><br />
+        Tri-Cities, WA · Open to remote and local work
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
