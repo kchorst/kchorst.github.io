@@ -257,87 +257,58 @@
       color: var(--ink);
     }
 
-    /* PROJECTS GRID */
-    .projects-grid {
+    /* FEATURED PROJECTS */
+    .featured-projects {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1rem;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .project-card {
-      background: var(--surface);
+    .featured-project {
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.25rem 1.375rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      padding: 1.5rem 1.75rem;
     }
 
-    .project-card:hover {
-      border-color: var(--accent-mid);
-      box-shadow: 0 2px 16px rgba(45,91,227,0.07);
-    }
-
-    .project-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.75rem;
-    }
-
-    .project-name {
-      font-size: 15px;
+    .featured-project h3 {
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--ink);
+      margin-bottom: 0.75rem;
       letter-spacing: -0.01em;
     }
 
-    .project-status {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 100px;
-      white-space: nowrap;
-      flex-shrink: 0;
+    .featured-project p {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
 
-    .status-active { background: var(--green-soft); color: var(--green); }
-    .status-progress { background: var(--amber-soft); color: var(--amber); }
-
-    .project-desc {
-      font-size: 13.5px;
+    .featured-outcome {
+      font-size: 13px;
       color: var(--ink-mid);
       line-height: 1.6;
+      padding: 0.75rem 1rem;
+      background: var(--surface-3);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
     }
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 2px;
+    .featured-outcome strong {
+      color: var(--ink);
     }
 
-    .project-tag {
-      font-family: var(--mono);
-      font-size: 10.5px;
+    .featured-link a {
+      font-size: 13px;
       color: var(--accent);
-      background: var(--accent-soft);
-      padding: 2px 7px;
-      border-radius: 4px;
+      font-weight: 500;
     }
 
-    .project-link {
-      font-size: 12.5px;
-      color: var(--ink-muted);
-      margin-top: auto;
-      padding-top: 0.25rem;
-    }
-
-    .project-link a {
-      color: var(--accent);
-      font-family: var(--mono);
+    .featured-link a:hover {
+      text-decoration: underline;
     }
 
     /* HOW I WORK */
@@ -431,7 +402,8 @@
       .nav-links { gap: 1rem; }
       .hero { padding: 3rem 1.25rem 2.5rem; }
       section { padding: 2.5rem 1.25rem; }
-      .projects-grid, .work-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .featured-projects { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -440,29 +412,27 @@
 <nav>
   <span class="nav-logo">kchorst.github.io</span>
   <ul class="nav-links">
+    <li><a href="#">Home</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#how">How I Work</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="https://kchorst.com" class="nav-ext">kchorst.com ↗</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">AI Implementation Engineer</div>
-  <h1>Kevin C. Horst<br><em>Builder. Implementer.</em></h1>
+  <div class="hero-eyebrow">Builder. Implementer.</div>
+  <h1>Kevin C. Horst<br><em>I build tools for real-world constraints.</em></h1>
 
   <div class="open-badge">Open to work</div>
 
   <p class="hero-summary">
-    I build and deploy AI systems for real-world constraints — local LLM stacks,
-    no-GPU environments, privacy-sensitive workflows. Based in the Tri-Cities, WA.
-    Open to AI implementation contracts, Developer Advocate roles, and embedded AI consulting.
+    Based in the Tri-Cities, WA. I build Chrome extensions, local LLM tools, educational apps, and creative audio software — focused on privacy, usability, and practical solutions.
   </p>
 
   <div class="hero-ctas">
-    <a href="https://github.com/kchorst" class="btn btn-primary">GitHub Profile</a>
-    <a href="https://kchorst.com" class="btn">kchorst.com →</a>
+    <a href="#projects" class="btn btn-primary">See the work</a>
+    <a href="https://github.com/kchorst" class="btn">GitHub</a>
     <a href="https://linkedin.com/in/kchorst" class="btn">LinkedIn</a>
   </div>
 
@@ -471,183 +441,131 @@
     <span class="tag">Python</span>
     <span class="tag">Chrome Extensions</span>
     <span class="tag">React Native</span>
-    <span class="tag">Ollama</span>
-    <span class="tag">llama.cpp</span>
+    <span class="tag">Audio Processing</span>
     <span class="tag">Google Apps Script</span>
-    <span class="tag">VS Code + Continue</span>
-    <span class="tag">Prompt Engineering</span>
-    <span class="tag">Vercel</span>
-    <span class="tag">GitHub Pages</span>
     <span class="tag">HTML/CSS</span>
   </div>
 </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Portfolio</div>
-  <div class="section-title">Things I've shipped</div>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">AI Chat Navigator</div>
-        <span class="project-status status-active">Active</span>
-      </div>
-      <p class="project-desc">Chrome side-panel extension that scrapes and organizes conversation history across Claude, Gemini, and Perplexity. Merge-on-save caching, working scrapers for all three platforms, and a Chat Distiller feature — two-tier distillation, new-tab prefill, zero cost.</p>
-      <div class="project-tags">
-        <span class="project-tag">Chrome MV3</span>
-        <span class="project-tag">Side Panel</span>
-        <span class="project-tag">DOM scraping</span>
-        <span class="project-tag">JS</span>
-      </div>
-      <div class="project-link"><a href="https://github.com/kchorst/Ai-Chat-Navigator">↗ kchorst/Ai-Chat-Navigator</a></div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">LLM Tester / TPS Meter</div>
-        <span class="project-status status-active">Active</span>
-      </div>
-      <p class="project-desc">Chrome/Edge extension for benchmarking local LLM throughput against Ollama and LM Studio. Tabs for live benchmark, RAG stress test, model comparison, history, and cloud backends (Anthropic, OpenAI). Uses <code style="font-family:var(--mono);font-size:12px">eval_count</code> for accurate Ollama token counts.</p>
-      <div class="project-tags">
-        <span class="project-tag">Chrome Extension</span>
-        <span class="project-tag">Ollama API</span>
-        <span class="project-tag">LM Studio</span>
-        <span class="project-tag">JS</span>
-      </div>
-      <div class="project-link"><a href="https://github.com/kchorst/tps-meter">↗ kchorst/tps-meter</a></div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">LLMParametizer</div>
-        <span class="project-status status-progress">In development</span>
-      </div>
-      <p class="project-desc">Parameter exploration tool for local LLMs — helps users understand and tune model behavior across temperature, top-p, repeat penalty, and other inference settings. Designed to demystify the knobs that matter for real deployment.</p>
-      <div class="project-tags">
-        <span class="project-tag">Ollama</span>
-        <span class="project-tag">LLM tooling</span>
-        <span class="project-tag">JS</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">Textify</div>
-        <span class="project-status status-progress">In progress</span>
-      </div>
-      <p class="project-desc">Chrome extension that converts webpage images to ASCII art in-place. Fixed a Chrome storage quota bug by switching from raw pixel array storage to JPEG data URL compression via canvas — a 40–80× size reduction per image.</p>
-      <div class="project-tags">
-        <span class="project-tag">Chrome MV3</span>
-        <span class="project-tag">Canvas API</span>
-        <span class="project-tag">JS</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">audio-prep-suite</div>
-        <span class="project-status status-active">Active</span>
-      </div>
-      <p class="project-desc">Python toolset for audio preprocessing — normalization, silence trimming, format conversion — built to support local LLM and language learning pipelines where clean audio input matters.</p>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Audio processing</span>
-      </div>
-      <div class="project-link"><a href="https://github.com/kchorst/audio-prep-suite">↗ kchorst/audio-prep-suite</a></div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">youtube-movie-creator-toolkit</div>
-        <span class="project-status status-active">Active</span>
-      </div>
-      <p class="project-desc">YouTube video automation pipeline using local LLMs for script generation, narration prep, and asset sequencing. Designed to run entirely on local hardware — no cloud API costs.</p>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Local LLM</span>
-        <span class="project-tag">Automation</span>
-      </div>
-      <div class="project-link"><a href="https://github.com/kchorst/youtube-movie-creator-toolkit">↗ kchorst/youtube-movie-creator-toolkit</a></div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-name">Multilingual Learning Apps</div>
-        <span class="project-status status-active">Live</span>
-      </div>
-      <p class="project-desc">Expo/React Native PWAs for kanji, phonetic alphabets, and general language learning — deployed on Vercel. Backed by a Google Apps Script email system (Kanji of the Day, Letter of the Day, Phrase of the Day) serving daily dispatches across 15+ writing systems including Japanese, Armenian, and Cyrillic.</p>
-      <div class="project-tags">
-        <span class="project-tag">React Native</span>
-        <span class="project-tag">Expo</span>
-        <span class="project-tag">Vercel</span>
-        <span class="project-tag">Google Apps Script</span>
-      </div>
-      <div class="project-link"><a href="https://github.com/kchorst/kanji-web">↗ kchorst/kanji-web</a></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- HOW I WORK -->
-<section id="how">
-  <div class="section-label">Process</div>
-  <div class="section-title">How I work</div>
-
-  <div class="consulting-block">
-    <h3>Local AI Consulting</h3>
-    <p>I help privacy-sensitive small businesses — attorneys, therapists, accountants, financial advisors — deploy local LLM systems that keep their data off the cloud entirely. Based in the Tri-Cities / Eastern WA market. Referrals welcome from local IT freelancers.</p>
-  </div>
+<!-- PROJECT CATEGORIES -->
+<section id="categories">
+  <div class="section-label">What I build</div>
+  <div class="section-title">Three kinds of problems</div>
 
   <div class="work-grid">
-
     <div class="work-block">
-      <h3>Local AI Development</h3>
-      <p>16GB RAM, no-GPU laptop running <code style="font-family:var(--mono);font-size:12px">llama-server</code> with Qwen 2.5 Coder 7B. Connected to Continue in VS Code. Local 7B handles mechanical coding tasks; Claude (browser) handles planning and architecture. Tested LAN and Tailscale for mobile-to-llama-server workflows.</p>
+      <h3>Chrome Extensions & Browser Tools</h3>
+      <p>AI Chat Navigator for organizing conversations across platforms, TPS Meter for benchmarking local LLMs, Textify for ASCII art conversion. All using Manifest V3 with service workers and side panels.</p>
     </div>
 
     <div class="work-block">
-      <h3>Prompt Engineering</h3>
-      <p>I treat prompts as specs, not requests — XML-tagged context blocks, explicit negative examples, tiered outputs. Most of my extension features start as a written spec before a line of code is written.</p>
+      <h3>Local LLM Tooling</h3>
+      <p>Parameter exploration tools, audio preprocessing pipelines, and automation workflows designed to run on consumer hardware. Privacy-focused solutions that keep data local.</p>
     </div>
 
     <div class="work-block">
-      <h3>Chrome Extension Architecture</h3>
-      <p>All recent extensions use Manifest V3 with <code style="font-family:var(--mono);font-size:12px">chrome.storage.local</code>, service workers, and side panels where applicable. I've navigated MV3 constraints around content scripts, CORS, and background persistence.</p>
+      <h3>Educational & Language Apps</h3>
+      <p>Kanji/Letter/Phrase of the Day apps serving 15+ writing systems, vocational curriculum design using discovery-based learning, and tools that make education hands-on.</p>
     </div>
 
     <div class="work-block">
-      <h3>Vocational AI Curriculum</h3>
-      <p>Designed a full vocational tech course for 8 high school students around gap/fill discovery pedagogy — no instructions, only objects and problems. Tracks: web server, LLM, music production, IoT. LLM access was earned, not given.</p>
+      <h3>Creative & Audio Tools</h3>
+      <p>MIDI Performer for score alignment and playback, YouTube automation pipelines, and music production tools. Building creative software that respects user constraints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Work I'm proud of</div>
+
+  <div class="featured-projects">
+
+    <div class="featured-project">
+      <h3>MIDI Performer</h3>
+      <p>Audio playback and score alignment tool for musicians. Handles MIDI file processing, score-to-audio alignment, and performance analysis. Built with Python for local audio processing workflows.</p>
+      <div class="featured-outcome">
+        <strong>Outcome:</strong> A practical tool for musicians to work with MIDI files, analyze performances, and align audio with musical scores.
+      </div>
+      <div class="featured-link"><a href="https://github.com/kchorst/MIDI-Performer">View project →</a></div>
     </div>
 
+    <div class="featured-project">
+      <h3>Multilingual Learning Apps</h3>
+      <p>Expo/React Native PWAs for kanji, phonetic alphabets, and general language learning. Backed by a Google Apps Script email system serving daily dispatches across 15+ writing systems including Japanese, Armenian, and Cyrillic.</p>
+      <div class="featured-outcome">
+        <strong>Outcome:</strong> Deployed on Vercel, serving daily language learning content to users worldwide with Kanji of the Day, Letter of the Day, and Phrase of the Day features.
+      </div>
+      <div class="featured-link"><a href="https://github.com/kchorst/kanji-web">View project →</a></div>
+    </div>
+
+    <div class="featured-project">
+      <h3>AI Chat Navigator</h3>
+      <p>Chrome side-panel extension that scrapes and organizes conversation history across Claude, Gemini, and Perplexity. Features merge-on-save caching, working scrapers for all three platforms, and a Chat Distiller feature for two-tier distillation.</p>
+      <div class="featured-outcome">
+        <strong>Outcome:</strong> Zero-cost solution for managing AI conversations across platforms with new-tab prefill and intelligent organization.
+      </div>
+      <div class="featured-link"><a href="https://github.com/kchorst/Ai-Chat-Navigator">View project -&gt;</a></div>
+    </div>
+
+    <div class="featured-project">
+      <h3>Textify</h3>
+      <p>Chrome extension that converts webpage images to ASCII art in-place. Solved a Chrome storage quota bug by switching from raw pixel array storage to JPEG data URL compression via canvas — achieving a 40–80× size reduction per image.</p>
+      <div class="featured-outcome">
+        <strong>Outcome:</strong> A creative tool that demonstrates practical problem-solving with browser storage constraints and canvas API optimization.
+      </div>
+      <div class="featured-link"><a href="https://github.com/kchorst">View project →</a></div>
+    </div>
   </div>
 
-  <pre class="code-block">VS Code
- └── Continue (v1 YAML config)
- └── llama-server ←→ Qwen 2.5 Coder 7B (local)
- └── LAN / Tailscale ←→ mobile browser
-
-Chrome Extension workflow:
- content_script → background service worker → chrome.storage.local
-                ↘ side_panel UI</pre>
+  <div style="margin-top: 2rem; text-align: center;">
+    <a href="https://github.com/kchorst" class="btn">View all projects on GitHub</a>
+  </div>
 </section>
+
+<!-- PHILOSOPHY -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">A few things I believe</div>
+
+  <div class="work-grid">
+    <div class="work-block">
+      <h3>Build tools that solve specific problems</h3>
+      <p>Generic solutions rarely work well. I build tools around specific use cases — a grading assistant, a reflection coach, a workflow diagnostic. When a tool is purpose-built, people see the utility and embrace it.</p>
+    </div>
+
+    <div class="work-block">
+      <h3>Prototype quickly to learn what works</h3>
+      <p>I build solutions every day and get things in front of real users early. If they provide practical utility they get refined and iterated upon. If not, I learn from the experience and archive them.</p>
+    </div>
+
+    <div class="work-block">
+      <h3>Privacy and local-first options matter</h3>
+      <p>Not everything needs to live in the cloud. I build local-first tools that keep data on your hardware, giving you control and privacy without sacrificing functionality.</p>
+    </div>
+
+    <div class="work-block">
+      <h3>Educational tools should be hands-on</h3>
+      <p>The best learning happens through discovery, not instruction. My vocational curriculum design uses gap/fill pedagogy — students earn access to tools by solving problems, not by following tutorials.</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Contact</div>
-  <div class="section-title">Get in touch</div>
+  <div class="section-title">I'm open to work</div>
 
   <p style="color:var(--ink-mid); max-width:480px; font-size:15px; line-height:1.7;">
-    Open to AI implementation contracts, Developer Advocate roles, and embedded AI consulting — remote or on-site. Also available for local LLM deployment consulting in the Tri-Cities / Eastern WA area.
+    If you're looking for someone who can build practical tools across Chrome extensions, local LLMs, educational apps, or creative software — I'd be glad to hear from you. Open to contracts and collaborations, remote or on-site in the Tri-Cities area.
   </p>
 
   <div class="contact-row">
-    <a href="https://kchorst.com" class="btn">kchorst.com</a>
+    <a href="mailto:your@email.com" class="btn btn-primary">Email me</a>
     <a href="https://github.com/kchorst" class="btn">GitHub</a>
     <a href="https://linkedin.com/in/kchorst" class="btn">LinkedIn</a>
-    <a href="https://formspree.io/f/mdavpbpd" class="btn btn-primary">Send a message</a>
   </div>
 
   <p style="margin-top:1.5rem; font-size:13px; color:var(--ink-muted);">Tri-Cities, WA · Open to remote and local work</p>
