@@ -339,6 +339,21 @@
       line-height: 1.65;
     }
 
+    .repo-links {
+      margin-top: 1rem;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .repo-links a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .repo-links a:hover {
+      text-decoration: underline;
+    }
+
     .code-block {
       font-family: var(--mono);
       font-size: 11.5px;
@@ -405,6 +420,176 @@
       .work-grid { grid-template-columns: 1fr; }
       .featured-projects { gap: 1.5rem; }
     }
+
+    /* GITHUB REPOSITORIES SECTION */
+    .loading-text {
+      text-align: center;
+      color: var(--ink-muted);
+      font-size: 14px;
+      padding: 2rem;
+    }
+
+    .repo-category {
+      margin-bottom: 3rem;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .category-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .category-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    .category-description {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .repo-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .repo-card:hover {
+      border-color: var(--accent-mid);
+      box-shadow: 0 4px 16px rgba(45,91,227,0.1);
+      transform: translateY(-2px);
+    }
+
+    .repo-image {
+      margin-bottom: 1rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface-3);
+    }
+
+    .repo-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .repo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 0.5rem;
+    }
+
+    .repo-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .repo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--surface-3);
+      color: var(--ink-muted);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .repo-link:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .repo-arrow {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .repo-description {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .repo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    .repo-language {
+      font-family: var(--mono);
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .repo-stats {
+      font-family: var(--mono);
+    }
+
+    .repo-updated {
+      font-family: var(--mono);
+      margin-left: auto;
+    }
+
+    @media (max-width: 600px) {
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-description {
+        font-size: 13px;
+      }
+
+      .repo-meta {
+        gap: 0.5rem;
+      }
+
+      .repo-updated {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -414,6 +599,7 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#all-repos">All Repos</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="https://kchorst.com" class="nav-ext">kchorst.com ↗</a></li>
   </ul>
@@ -450,27 +636,62 @@
 <!-- PROJECT CATEGORIES -->
 <section id="categories">
   <div class="section-label">What I build</div>
-  <div class="section-title">Three kinds of problems</div>
+  <div class="section-title">My Development Focus</div>
 
   <div class="work-grid">
     <div class="work-block">
-      <h3>Chrome Extensions & Browser Tools</h3>
-      <p>AI Chat Navigator for organizing conversations across platforms, TPS Meter for benchmarking local LLMs, Textify for ASCII art conversion, and Sentinel+ for screening messages on cloud AI chat sites for confidential information. All using Manifest V3 with service workers and side panels.</p>
+      <h3>🌐 Browser Extensions</h3>
+      <p>Chrome and browser extensions that enhance productivity, manage AI conversations, and provide creative tools. Built with Manifest V3, service workers, and modern browser APIs.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/Ai-Chat-Navigator">Ai-Chat-Navigator</a> • 
+        <a href="https://github.com/kchorst/LLM-Tester">LLM-Tester</a> • 
+        <a href="https://github.com/kchorst/Sentinel-Plus">Sentinel-Plus</a> • 
+        <a href="https://github.com/kchorst/Textify">Textify</a> • 
+        <a href="https://github.com/kchorst/tps-meter">tps-meter</a> • 
+        <a href="https://github.com/kchorst/Web-Time-Machine">Web-Time-Machine</a>
+      </div>
     </div>
 
     <div class="work-block">
-      <h3>Local LLM Tooling</h3>
-      <p>Parameter exploration tools, audio preprocessing pipelines, and automation workflows designed to run on consumer hardware. Privacy-focused solutions that keep data local.</p>
+      <h3>📱 Standalone Apps</h3>
+      <p>React Native and Expo applications for language learning, education, and utilities. Deployed as mobile apps and PWAs serving users across multiple platforms.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/alphabets">alphabets</a> • 
+        <a href="https://github.com/kchorst/kanji">kanji</a> • 
+        <a href="https://github.com/kchorst/kanji-web">kanji-web</a> • 
+        <a href="https://github.com/kchorst/mylangapp">mylangapp</a> • 
+        <a href="https://github.com/kchorst/mylangapp-web">mylangapp-web</a> • 
+        <a href="https://github.com/kchorst/SLPR-The-Sleep-App">SLPR-The-Sleep-App</a>
+      </div>
     </div>
 
     <div class="work-block">
-      <h3>Educational & Language Apps</h3>
-      <p>Kanji/Letter/Phrase of the Day apps serving 15+ writing systems, vocational curriculum design using discovery-based learning, and tools that make education hands-on.</p>
+      <h3>🤖 LLM Related</h3>
+      <p>Tools for working with local Large Language Models including parameter exploration, benchmarking, testing, and optimization. Privacy-focused solutions that keep AI capabilities local.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/LLM-Parametizer">LLM-Parametizer</a> • 
+        <a href="https://github.com/kchorst/LLM-Tester">LLM-Tester</a> • 
+        <a href="https://github.com/kchorst/LLM-Radar">LLM-Radar</a> • 
+        <a href="https://github.com/kchorst/Ai-Chat-Navigator">Ai-Chat-Navigator</a> • 
+        <a href="https://github.com/kchorst/tps-meter">tps-meter</a>
+      </div>
     </div>
 
     <div class="work-block">
-      <h3>Creative & Audio Tools</h3>
-      <p>MIDI Performer for score alignment and playback, YouTube automation pipelines, and music production tools. Building creative software that respects user constraints.</p>
+      <h3>🎵 Audio/Video Related</h3>
+      <p>Python toolkits for audio processing, video automation, and content creation pipelines. Practical solutions for musicians, content creators, and media professionals.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/audio-prep-suite">audio-prep-suite</a> • 
+        <a href="https://github.com/kchorst/youtube-movie-creator-toolkit">youtube-movie-creator-toolkit</a>
+      </div>
+    </div>
+
+    <div class="work-block">
+      <h3>🎹 MIDI Related</h3>
+      <p>Specialized tools for MIDI file processing, score alignment, and musical performance enhancement. Bridge the gap between digital notation and expressive performance.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/MIDI-Performer">MIDI-Performer</a>
+      </div>
     </div>
   </div>
 </section>
@@ -524,6 +745,16 @@
   </div>
 </section>
 
+<!-- ALL GITHUB REPOSITORIES -->
+<section id="all-repos">
+  <div class="section-label">Complete Portfolio</div>
+  <div class="section-title">All GitHub Repositories</div>
+  
+  <div id="github-repos-container">
+    <p class="loading-text">Loading repositories...</p>
+  </div>
+</section>
+
 <!-- PHILOSOPHY -->
 <section id="about">
   <div class="section-label">About</div>
@@ -563,7 +794,7 @@
   </p>
 
   <div class="contact-row">
-    <a href="mailto:your@email.com" class="btn btn-primary">Email me</a>
+    <a href="mailto:catsoftravels@gmail.com" class="btn btn-primary">Email me</a>
     <a href="https://github.com/kchorst" class="btn">GitHub</a>
     <a href="https://linkedin.com/in/kchorst" class="btn">LinkedIn</a>
   </div>
@@ -576,6 +807,8 @@
   <a href="https://github.com/kchorst">github.com/kchorst</a> &nbsp;·&nbsp;
   <a href="https://linkedin.com/in/kchorst">linkedin.com/in/kchorst</a>
 </footer>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
