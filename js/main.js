@@ -56,13 +56,14 @@ const repoCategories = {
   'MIDI-Performer': ['midi-related']
 };
 
-// Repository images from blog posts
+// Repository images from kchorst repository assets
 const repoImages = {
-  'Textify': 'https://kchorst.com/wp-content/uploads/2026/08/audrey2-glitch.png',
-  'Web-Time-Machine': 'https://kchorst.com/wp-content/uploads/2026/07/Screenshot-2026-07-29-102912.png',
-  'LLM-Parametizer': 'https://kchorst.com/wp-content/uploads/2026/07/Screenshot-2026-07-06-101545.png',
-  'Sentinel-Plus': 'https://kchorst.com/wp-content/uploads/2026/06/Screenshot-2026-06-28-095152.png',
-  'MIDI-Performer': 'https://kchorst.com/wp-content/uploads/2026/07/Screenshot-2026-07-19-150042.png'
+  'Textify': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/textify.png',
+  'Web-Time-Machine': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/web-time-machine.png',
+  'LLM-Parametizer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM-Parametizer.png',
+  'Sentinel-Plus': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Sentinel-Plus.png',
+  'MIDI-Performer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI-Performer.png',
+  'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png'
 };
 
 // Repositories to exclude (portfolio/meta)
