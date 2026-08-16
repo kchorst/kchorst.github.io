@@ -70,10 +70,10 @@ const excludedRepos = ['kchorst', 'kchorst.github.io'];
 
 // Fetch GitHub repositories
 async function fetchGitHubRepos() {
-  const username = 'kchorst';
+  var username = 'kchorst';
   
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
+    var response = await fetch('https://api.github.com/users/' + username + '/repos?per_page=100', {
       headers: {
         'Accept': 'application/vnd.github.v3+json'
       }
@@ -81,12 +81,12 @@ async function fetchGitHubRepos() {
     
     if (!response.ok) throw new Error('Failed to fetch repositories');
     
-    const repos = await response.json();
+    var repos = await response.json();
     
     // Filter out excluded repos and sort by updated date
-    const filteredRepos = repos
-      .filter(repo => !excludedRepos.includes(repo.name))
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+    var filteredRepos = repos
+      .filter(function(repo) { return !excludedRepos.includes(repo.name); })
+      .sort(function(a, b) { return new Date(b.updated_at) - new Date(a.updated_at); });
     
     return filteredRepos;
   } catch (error) {
@@ -97,17 +97,17 @@ async function fetchGitHubRepos() {
 
 // Group repositories by category
 function groupReposByCategory(repos) {
-  const grouped = {};
+  var grouped = {};
   
   // Initialize all categories
-  Object.keys(categories).forEach(key => {
+  Object.keys(categories).forEach(function(key) {
     grouped[key] = [];
   });
   
   // Assign repos to categories
-  repos.forEach(repo => {
-    const assignedCategories = repoCategories[repo.name] || [];
-    assignedCategories.forEach(category => {
+  repos.forEach(function(repo) {
+    var assignedCategories = repoCategories[repo.name] || [];
+    assignedCategories.forEach(function(category) {
       if (grouped[category]) {
         grouped[category].push(repo);
       }
@@ -126,33 +126,24 @@ function renderRepoCard(repo) {
   const updated = new Date(repo.updated_at).toLocaleDateString();
   const imageUrl = repoImages[repo.name] || null;
   
-  let imageHtml = '';
+  var imageHtml = '';
   if (imageUrl) {
-    imageHtml = `
-      <div class="repo-image">
-        <img src="${imageUrl}" alt="${repo.name} screenshot" loading="lazy" />
-      </div>
-    `;
+    imageHtml = '<div class="repo-image"><img src="' + imageUrl + '" alt="' + repo.name + ' screenshot" loading="lazy" /></div>';
   }
   
-  return `
-    <div class="repo-card">
-      ${imageHtml}
-      <div class="repo-header">
-        <h3 class="repo-name">${repo.name}</h3>
-        <a href="${repo.html_url}" class="repo-link" target="_blank" rel="noopener">
-          <span class="repo-arrow">→</span>
-        </a>
-      </div>
-      <p class="repo-description">${description}</p>
-      <div class="repo-meta">
-        <span class="repo-language">${language}</span>
-        <span class="repo-stats">★ ${stars}</span>
-        <span class="repo-stats">🍴 ${forks}</span>
-        <span class="repo-updated">Updated ${updated}</span>
-      </div>
-    </div>
-  `;
+  var cardHtml = '<div class="repo-card">' + imageHtml + 
+    '<div class="repo-header">' +
+    '<h3 class="repo-name">' + repo.name + '</h3>' +
+    '<a href="' + repo.html_url + '" class="repo-link" target="_blank" rel="noopener">' +
+    '<span class="repo-arrow">→</span></a></div>' +
+    '<p class="repo-description">' + description + '</p>' +
+    '<div class="repo-meta">' +
+    '<span class="repo-language">' + language + '</span>' +
+    '<span class="repo-stats">★ ' + stars + '</span>' +
+    '<span class="repo-stats">🍴 ' + forks + '</span>' +
+    '<span class="repo-updated">Updated ' + updated + '</span></div></div>';
+  
+  return cardHtml;
 }
 
 // Render all categories and their repositories
@@ -165,25 +156,20 @@ function renderCategorizedRepos(groupedRepos) {
     return;
   }
   
-  let html = '';
+  var html = '';
   
-  Object.keys(categories).forEach(categoryKey => {
-    const category = categories[categoryKey];
-    const repos = groupedRepos[categoryKey];
+  Object.keys(categories).forEach(function(categoryKey) {
+    var category = categories[categoryKey];
+    var repos = groupedRepos[categoryKey];
     
     if (repos.length > 0) {
-      html += `
-        <div class="repo-category">
-          <div class="category-header">
-            <span class="category-icon">${category.icon}</span>
-            <h2 class="category-title">${category.name}</h2>
-          </div>
-          <p class="category-description">${category.description}</p>
-          <div class="repo-grid">
-            ${repos.map(renderRepoCard).join('')}
-          </div>
-        </div>
-      `;
+      var reposHtml = repos.map(renderRepoCard).join('');
+      html += '<div class="repo-category">' +
+        '<div class="category-header">' +
+        '<span class="category-icon">' + category.icon + '</span>' +
+        '<h2 class="category-title">' + category.name + '</h2></div>' +
+        '<p class="category-description">' + category.description + '</p>' +
+        '<div class="repo-grid">' + reposHtml + '</div></div>';
     }
   });
   
@@ -192,17 +178,17 @@ function renderCategorizedRepos(groupedRepos) {
 
 // Initialize GitHub repositories section
 async function initGitHubRepos() {
-  const container = document.getElementById('github-repos-container');
+  var container = document.getElementById('github-repos-container');
   if (!container) return;
   
   container.innerHTML = '<p class="loading-text">Loading repositories...</p>';
   
-  const repos = await fetchGitHubRepos();
-  const groupedRepos = groupReposByCategory(repos);
+  var repos = await fetchGitHubRepos();
+  var groupedRepos = groupReposByCategory(repos);
   renderCategorizedRepos(groupedRepos);
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   initGitHubRepos();
 });
