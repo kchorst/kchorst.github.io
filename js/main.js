@@ -120,12 +120,12 @@ function groupReposByCategory(repos) {
 
 // Render a single repository card
 function renderRepoCard(repo) {
-  const description = repo.description || 'No description available.';
-  const language = repo.language || 'Various';
-  const stars = repo.stargazers_count;
-  const forks = repo.forks_count;
-  const updated = new Date(repo.updated_at).toLocaleDateString();
-  const imageUrl = repoImages[repo.name] || null;
+  var description = repo.description || 'No description available.';
+  var language = repo.language || 'Various';
+  var stars = repo.stargazers_count;
+  var forks = repo.forks_count;
+  var updated = new Date(repo.updated_at).toLocaleDateString();
+  var imageUrl = repoImages[repo.name] || null;
   
   var imageHtml = '';
   if (imageUrl) {
