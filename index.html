@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Senior Business Systems Analyst & Instructional Designer specializing in enterprise process automation, privacy-sensitive local LLMs, technical training lead, and custom workflow tools.">
-  <title>Kevin C. Horst — Senior Business Systems Analyst & Instructional Designer</title>
+  <meta name="description" content="AI Implementation Engineer building local LLM stacks, Chrome extensions, and workflow automation tools. Technical portfolio for recruiters and developers.">
+  <title>Kevin C. Horst — AI Implementation Engineer</title>
   <style>
     :root {
       --ink: #111118;
@@ -48,15 +48,9 @@
       }
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--sans);
@@ -67,20 +61,8 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     /* NAV */
     nav {
@@ -143,9 +125,9 @@
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.12;
       letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 1.5rem;
@@ -156,18 +138,10 @@
       color: var(--accent);
     }
 
-    .hero-subtitle {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-
     .hero-summary {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--ink-mid);
-      max-width: 640px;
+      max-width: 560px;
       line-height: 1.7;
       margin-bottom: 2rem;
     }
@@ -380,6 +354,43 @@
       text-decoration: underline;
     }
 
+    .code-block {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-mid);
+      background: var(--surface-3);
+      border-radius: var(--radius);
+      padding: 0.875rem 1rem;
+      margin-top: 2.5rem;
+      line-height: 1.7;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* CONSULTING CALLOUT */
+    .consulting-block {
+      background: var(--accent-soft);
+      border: 1px solid rgba(45,91,227,0.18);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .consulting-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .consulting-block p {
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
     /* CONTACT */
     .contact-row {
       display: flex;
@@ -401,7 +412,6 @@
     footer a { color: var(--ink-muted); }
     footer a:hover { color: var(--accent); }
 
-    /* RESPONSIVE */
     @media (max-width: 600px) {
       nav { padding: 0 1rem; }
       .nav-links { gap: 1rem; }
@@ -419,128 +429,168 @@
       padding: 2rem;
     }
 
-    /* =========================================
-       DYNAMIC GITHUB REPOSITORIES GRID LAYOUT
-       ========================================= */
     .repo-category {
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
-    
+
     .category-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 0.5rem;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
     }
-    
+
     .category-icon {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      line-height: 1;
     }
-    
+
     .category-title {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--ink);
-      letter-spacing: -0.01em;
+      margin: 0;
+      letter-spacing: -0.015em;
     }
-    
+
     .category-description {
       font-size: 14px;
       color: var(--ink-mid);
+      line-height: 1.65;
       margin-bottom: 1.5rem;
-      max-width: 650px;
-      line-height: 1.6;
+      max-width: 680px;
     }
-    
+
     .repo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
-    
+
     .repo-card {
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      transition: border-color 0.2s ease;
+      padding: 1.25rem 1.5rem;
+      transition: all 0.2s ease;
     }
 
     .repo-card:hover {
-      border-color: var(--border-strong);
+      border-color: var(--accent-mid);
+      box-shadow: 0 4px 16px rgba(45,91,227,0.1);
+      transform: translateY(-2px);
     }
-    
+
     .repo-image {
       margin-bottom: 1rem;
       border-radius: var(--radius);
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      background: var(--surface-3);
     }
-    
+
     .repo-image img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.3s ease;
+      object-fit: cover;
     }
-    
-    .repo-card:hover .repo-image img {
-      transform: scale(1.02);
-    }
-    
+
     .repo-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.5rem;
-      gap: 10px;
+      margin-bottom: 0.75rem;
+      gap: 0.5rem;
     }
-    
+
     .repo-name {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--ink);
-      word-break: break-word;
+      margin: 0;
+      letter-spacing: -0.01em;
       line-height: 1.3;
     }
-    
+
     .repo-link {
-      color: var(--ink-muted);
-      font-size: 18px;
-      transition: color 0.2s ease;
-    }
-    
-    .repo-card:hover .repo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent-soft);
       color: var(--accent);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      font-weight: bold;
     }
-    
+
+    .repo-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateX(2px);
+    }
+
+    .repo-arrow {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
     .repo-description {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--ink-mid);
       line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    
+
     .repo-meta {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--mono);
+      gap: 0.75rem;
       font-size: 11px;
       color: var(--ink-muted);
     }
-    
+
     .repo-language {
-      color: var(--accent);
+      font-family: var(--mono);
       font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .repo-stats {
+      font-family: var(--mono);
+    }
+
+    .repo-updated {
+      font-family: var(--mono);
+      margin-left: auto;
+    }
+
+    @media (max-width: 600px) {
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-description {
+        font-size: 13px;
+      }
+
+      .repo-meta {
+        gap: 0.5rem;
+      }
+
+      .repo-updated {
+        margin-left: 0;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -550,7 +600,6 @@
   <span class="nav-logo">kchorst.github.io</span>
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
-    <li><a href="#featured">Featured</a></li>
     <li><a href="#all-repos">Projects</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="https://kchorst.com" class="nav-ext">kchorst.com ↗</a></li>
@@ -559,91 +608,90 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Enterprise Automation · Systems Analysis · Instructional Design</div>
-  <h1>Kevin C. Horst<br><em>Aligning complex architecture with operational success.</em></h1>
-  
-  <div class="hero-subtitle">Senior Business Systems Analyst & Instructional Designer</div>
+  <div class="hero-eyebrow">Builder. Implementer.</div>
+  <h1>Kevin C. Horst<br><em>I build tools for real-world constraints.</em></h1>
+
   <div class="open-badge">Open to work</div>
-  
+
   <p class="hero-summary">
-    Based in the Tri-Cities, WA. I bridge the gap between technical architecture, automated workflows, and organizational adoption — specializing in enterprise process automation, privacy-sensitive local LLMs, technical training frameworks, and custom software tooling.
+    Based in the Tri-Cities, WA. I build Chrome extensions, local LLM tools, educational apps, and creative audio software — focused on privacy, usability, and practical solutions.
   </p>
-  
+
   <div class="hero-ctas">
-    <a href="#featured" class="btn btn-primary">See the work</a>
+    <a href="#all-repos" class="btn btn-primary">See the work</a>
     <a href="https://github.com/kchorst" class="btn">GitHub</a>
     <a href="https://linkedin.com/in/kchorst" class="btn">LinkedIn</a>
   </div>
-  
+
   <div class="tag-row">
-    <span class="tag">Process Automation</span>
-    <span class="tag">Instructional Design</span>
-    <span class="tag">Local LLMs & AI Privacy</span>
-    <span class="tag">Technical Training</span>
+    <span class="tag">JavaScript</span>
     <span class="tag">Python</span>
-    <span class="tag">TypeScript</span>
     <span class="tag">Chrome Extensions</span>
+    <span class="tag">React Native</span>
+    <span class="tag">Audio Processing</span>
+    <span class="tag">Google Apps Script</span>
+    <span class="tag">HTML/CSS</span>
   </div>
 </div>
 
 <!-- PROJECT CATEGORIES -->
 <section id="categories">
-  <div class="section-label">Capabilities & Stack</div>
-  <div class="section-title">Systems & Tooling Focus</div>
+  <div class="section-label">What I build</div>
+  <div class="section-title">My Development Focus</div>
 
   <div class="work-grid">
     <div class="work-block">
-      <h3>🎹 MIDI & Musical Workstations</h3>
-      <p>Specialized Python environments for arrangement, version fusion, collection audits, and performance interpretation. Bridging complex musical metadata with guided automation.</p>
+      <h3>🌐 Browser Extensions</h3>
+      <p>Chrome and browser extensions that enhance productivity, manage AI conversations, and provide creative tools. Built with Manifest V3, service workers, and modern browser APIs.</p>
       <div class="repo-links">
-        <a href="https://github.com/kchorst/MIDI-Remixer">MIDI-Remixer</a> • 
-        <a href="https://github.com/kchorst/MIDI-Library-Manager">MIDI-Library-Manager</a> • 
-        <a href="https://github.com/kchorst/MIDI-Performer">MIDI-Performer</a>
+        <a href="https://github.com/kchorst/Ai-Chat-Navigator">Ai-Chat-Navigator</a> • 
+        <a href="https://github.com/kchorst/LLM-Tester">LLM-Tester</a> • 
+        <a href="https://github.com/kchorst/Sentinel-Plus">Sentinel-Plus</a> • 
+        <a href="https://github.com/kchorst/Textify">Textify</a> • 
+        <a href="https://github.com/kchorst/tps-meter">tps-meter</a> • 
+        <a href="https://github.com/kchorst/Web-Time-Machine">Web-Time-Machine</a>
       </div>
     </div>
 
     <div class="work-block">
-      <h3>🤖 Local LLMs & Privacy-Sensitive AI</h3>
-      <p>Frameworks and tooling for evaluating, benchmarking, and bridging local Large Language Model stacks securely without leaking sensitive data to external endpoints.</p>
+      <h3>📱 Standalone Apps</h3>
+      <p>React Native and Expo applications for language learning, education, and utilities. Deployed as mobile apps and PWAs serving users across multiple platforms.</p>
       <div class="repo-links">
-        <a href="https://github.com/kchorst/LLM-Radar">LLM-Radar</a> • 
+        <a href="https://github.com/kchorst/alphabets">alphabets</a> • 
+        <a href="https://github.com/kchorst/kanji">kanji</a> • 
+        <a href="https://github.com/kchorst/kanji-web">kanji-web</a> • 
+        <a href="https://github.com/kchorst/mylangapp">mylangapp</a> • 
+        <a href="https://github.com/kchorst/mylangapp-web">mylangapp-web</a> • 
+        <a href="https://github.com/kchorst/SLPR-The-Sleep-App">SLPR-The-Sleep-App</a>
+      </div>
+    </div>
+
+    <div class="work-block">
+      <h3>🤖 LLM Related</h3>
+      <p>Tools for working with local Large Language Models including parameter exploration, benchmarking, testing, and optimization. Privacy-focused solutions that keep AI capabilities local.</p>
+      <div class="repo-links">
         <a href="https://github.com/kchorst/LLM-Parametizer">LLM-Parametizer</a> • 
         <a href="https://github.com/kchorst/LLM-Tester">LLM-Tester</a> • 
+        <a href="https://github.com/kchorst/LLM-Radar">LLM-Radar</a> • 
         <a href="https://github.com/kchorst/Ai-Chat-Navigator">Ai-Chat-Navigator</a> • 
         <a href="https://github.com/kchorst/tps-meter">tps-meter</a>
       </div>
     </div>
 
     <div class="work-block">
-      <h3>🌐 Web Extensions & Workflow Tools</h3>
-      <p>Custom browser tools engineered with Manifest V3 to optimize DOM manipulation, manage multi-platform AI chat histories, and automate complex online tasks.</p>
-      <div class="repo-links">
-        <a href="https://github.com/kchorst/Ai-Chat-Navigator">Ai-Chat-Navigator</a> • 
-        <a href="https://github.com/kchorst/LLM-Tester">LLM-Tester</a> • 
-        <a href="https://github.com/kchorst/Sentinel-Plus">Sentinel-Plus</a> • 
-        <a href="https://github.com/kchorst/Textify">Textify</a> • 
-        <a href="https://github.com/kchorst/Web-Time-Machine">Web-Time-Machine</a>
-      </div>
-    </div>
-
-    <div class="work-block">
-      <h3>📱 Instructional & Educational Apps</h3>
-      <p>Cross-platform apps and PWAs designed around gap/fill pedagogy for language retention, writing system discovery, and structured skill building.</p>
-      <div class="repo-links">
-        <a href="https://github.com/kchorst/alphabets">alphabets</a> • 
-        <a href="https://github.com/kchorst/kanji">kanji</a> • 
-        <a href="https://github.com/kchorst/kanji-web">kanji-web</a> • 
-        <a href="https://github.com/kchorst/mylangapp">mylangapp</a> • 
-        <a href="https://github.com/kchorst/SLPR-The-Sleep-App">SLPR-The-Sleep-App</a>
-      </div>
-    </div>
-
-    <div class="work-block">
-      <h3>🎵 Audio/Video Automation Pipelines</h3>
-      <p>Python toolkits for automated BPM detection, audio normalization, silence trimming, and rapid video publishing workflows.</p>
+      <h3>🎵 Audio/Video Related</h3>
+      <p>Python toolkits for audio processing, video automation, and content creation pipelines. Practical solutions for musicians, content creators, and media professionals.</p>
       <div class="repo-links">
         <a href="https://github.com/kchorst/audio-prep-suite">audio-prep-suite</a> • 
         <a href="https://github.com/kchorst/youtube-movie-creator-toolkit">youtube-movie-creator-toolkit</a>
+      </div>
+    </div>
+
+    <div class="work-block">
+      <h3>🎹 MIDI Related</h3>
+      <p>Specialized tools for MIDI file processing, score alignment, and musical performance enhancement. Bridge the gap between digital notation and expressive performance.</p>
+      <div class="repo-links">
+        <a href="https://github.com/kchorst/MIDI-Performer">MIDI-Performer</a>
       </div>
     </div>
   </div>
@@ -651,44 +699,45 @@
 
 <!-- FEATURED PROJECTS -->
 <section id="featured">
-  <div class="section-label">Featured Highlights</div>
-  <div class="section-title">Systems, Automation & Workstations</div>
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Work I'm proud of</div>
 
   <div class="featured-projects">
+
     <div class="featured-project">
-      <h3>MIDI Remixer</h3>
-      <p>MIDI mashup and arrangement workstation featuring Guided Mash, Version Fusion, and assisted arrangement workflows. Automates complex multi-track structural analysis and harmonized composition assembly.</p>
+      <h3>MIDI Performer</h3>
+      <p>Audio playback and score alignment tool for musicians. Handles MIDI file processing, score-to-audio alignment, and performance analysis. Built with Python for local audio processing workflows.</p>
       <div class="featured-outcome">
-        <strong>Impact:</strong> Streamlines multi-source musical arrangement pipelines into an intuitive, guided workflow backed by automated library analysis.
+        <strong>Outcome:</strong> A practical tool for musicians to work with MIDI files, analyze performances, and align audio with musical scores.
       </div>
-      <div class="featured-link"><a href="https://github.com/kchorst/MIDI-Remixer">View project →</a></div>
+      <div class="featured-link"><a href="https://github.com/kchorst/MIDI-Performer">View project →</a></div>
     </div>
 
     <div class="featured-project">
-      <h3>MIDI Library Manager</h3>
-      <p>Windows desktop utility for scanning, analyzing, organizing, reviewing, playing, and maintaining high-volume MIDI file collections. Features batch metadata extraction and fast collection auditing.</p>
+      <h3>Multilingual Learning Apps</h3>
+      <p>Expo/React Native PWAs for kanji, phonetic alphabets, and general language learning. Backed by a Google Apps Script email system serving daily dispatches across 15+ writing systems including Japanese, Armenian, and Cyrillic.</p>
       <div class="featured-outcome">
-        <strong>Impact:</strong> Solves large-scale file indexing bottlenecks for complex audio archives with high-performance local processing.
+        <strong>Outcome:</strong> Deployed on Vercel, serving daily language learning content to users worldwide with Kanji of the Day, Letter of the Day, and Phrase of the Day features.
       </div>
-      <div class="featured-link"><a href="https://github.com/kchorst/MIDI-Library-Manager">View project →</a></div>
-    </div>
-
-    <div class="featured-project">
-      <h3>LLM Radar</h3>
-      <p>Privacy-focused bridging system connecting mobile devices to a local desktop AI server via dynamic QR codes. Designed for rapid-proof chat testing and local file uploads without public cloud exposure.</p>
-      <div class="featured-outcome">
-        <strong>Impact:</strong> Enables immediate mobile validation of locally deployed AI endpoints, maintaining full data sovereignty and zero cloud leakage.
-      </div>
-      <div class="featured-link"><a href="https://github.com/kchorst/LLM-Radar">View project →</a></div>
+      <div class="featured-link"><a href="https://github.com/kchorst/kanji-web">View project →</a></div>
     </div>
 
     <div class="featured-project">
       <h3>AI Chat Navigator</h3>
-      <p>Chrome side-panel extension that scrapes and organizes conversation history across multi-provider AI environments (Claude, Gemini, Perplexity). Features two-tier chat distillation and merge-on-save caching.</p>
+      <p>Chrome side-panel extension that scrapes and organizes conversation history across Claude, Gemini, and Perplexity. Features merge-on-save caching, working scrapers for all three platforms, and a Chat Distiller feature for two-tier distillation.</p>
       <div class="featured-outcome">
-        <strong>Impact:</strong> Eliminates knowledge fragmentation across enterprise AI platforms through unified side-panel searching and distillation.
+        <strong>Outcome:</strong> Zero-cost solution for managing AI conversations across platforms with new-tab prefill and intelligent organization.
       </div>
-      <div class="featured-link"><a href="https://github.com/kchorst/Ai-Chat-Navigator">View project →</a></div>
+      <div class="featured-link"><a href="https://github.com/kchorst/Ai-Chat-Navigator">View project -&gt;</a></div>
+    </div>
+
+    <div class="featured-project">
+      <h3>Textify</h3>
+      <p>Chrome extension that converts webpage images to ASCII art in-place. Solved a Chrome storage quota bug by switching from raw pixel array storage to JPEG data URL compression via canvas — achieving a 40–80× size reduction per image.</p>
+      <div class="featured-outcome">
+        <strong>Outcome:</strong> A creative tool that demonstrates practical problem-solving with browser storage constraints and canvas API optimization.
+      </div>
+      <div class="featured-link"><a href="https://github.com/kchorst">View project →</a></div>
     </div>
   </div>
 
@@ -700,7 +749,7 @@
 <!-- ALL GITHUB REPOSITORIES -->
 <section id="all-repos">
   <div class="section-label">Complete Portfolio</div>
-  <div class="section-title">All Repositories</div>
+  <div class="section-title">All GitHub Repositories</div>
   
   <div id="github-repos-container">
     <p class="loading-text">Loading repositories...</p>
@@ -709,48 +758,49 @@
 
 <!-- PHILOSOPHY -->
 <section id="about">
-  <div class="section-label">Approach</div>
-  <div class="section-title">Systems & Instructional Principles</div>
+  <div class="section-label">About</div>
+  <div class="section-title">A few things I believe</div>
 
   <div class="work-grid">
     <div class="work-block">
-      <h3>Bridge technical complexity with user adoption</h3>
-      <p>The best system is only as good as a team's ability to use it. I build clear operational processes, comprehensive documentation, and targeted instructional frameworks that turn complex software into daily habit.</p>
+      <h3>Build tools that solve specific problems</h3>
+      <p>Generic solutions rarely work well. I build tools around specific use cases — a grading assistant, a reflection coach, a workflow diagnostic. When a tool is purpose-built, people see the utility and embrace it.</p>
     </div>
-    
+
     <div class="work-block">
-      <h3>Automate business bottlenecks first</h3>
-      <p>Target high-friction, repetitive workflows with purpose-built automation. Streamlining core processes frees teams to focus on strategy, content, and high-value execution.</p>
+      <h3>Prototype quickly to learn what works</h3>
+      <p>I build solutions every day and get things in front of real users early. If they provide practical utility they get refined and iterated upon. If not, I learn from the experience and archive them.</p>
     </div>
-    
+
     <div class="work-block">
-      <h3>Prioritize local-first & privacy-conscious AI</h3>
-      <p>Cloud options aren't always suitable for sensitive enterprise data. I deploy and benchmark local LLM architectures that guarantee full operational control and privacy without sacrificing functionality.</p>
+      <h3>Privacy and local-first options matter</h3>
+      <p>Not everything needs to live in the cloud. I build local-first tools that keep data on your hardware, giving you control and privacy without sacrificing functionality.</p>
     </div>
-    
+
     <div class="work-block">
-      <h3>Instructional design through gap/fill pedagogy</h3>
-      <p>Effective technical training builds confidence through active problem-solving rather than passive tutorials. Users acquire mastery by applying tools directly to operational challenges.</p>
+      <h3>Educational tools should be hands-on</h3>
+      <p>The best learning happens through discovery, not instruction. My vocational curriculum design uses gap/fill pedagogy — students earn access to tools by solving problems, not by following tutorials.</p>
     </div>
   </div>
 </section>
 
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Contact</div>
-  <div class="section-title">Let's Connect</div>
+  <div class="section-title">I'm open to work</div>
 
-  <p style="color:var(--ink-mid); max-width:520px; font-size:15px; line-height:1.7;">
-    If you are looking for leadership in business systems analysis, enterprise process automation, technical training frameworks, or local AI integration — I would be glad to connect. Available for enterprise roles, consulting, and technical lead engagements.
+  <p style="color:var(--ink-mid); max-width:480px; font-size:15px; line-height:1.7;">
+    If you're looking for someone who can build practical tools across Chrome extensions, local LLMs, educational apps, or creative software — I'd be glad to hear from you. Open to contracts and collaborations, remote or on-site in the Tri-Cities area.
   </p>
-  
+
   <div class="contact-row">
     <a href="mailto:catsoftravels@gmail.com" class="btn btn-primary">Email me</a>
     <a href="https://github.com/kchorst" class="btn">GitHub</a>
     <a href="https://linkedin.com/in/kchorst" class="btn">LinkedIn</a>
   </div>
-  
-  <p style="margin-top:1.5rem; font-size:13px; color:var(--ink-muted);">Tri-Cities, WA · Open to remote and on-site opportunities</p>
+
+  <p style="margin-top:1.5rem; font-size:13px; color:var(--ink-muted);">Tri-Cities, WA · Open to remote and local work</p>
 </section>
 
 <footer>
@@ -760,5 +810,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+
 </body>
 </html>
