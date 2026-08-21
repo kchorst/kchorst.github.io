@@ -1,3 +1,6 @@
+Here is the complete, corrected HTML. You can copy this entire block and paste it directly over your current file. I've removed the rule that was forcing the awkward project spacing.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +70,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* --- ADDED IMAGE FIX --- */
+    /* --- CORRECTED IMAGE FIX --- */
     img {
       max-width: 100%;
       height: auto;
-     
+      border-radius: var(--radius);
     }
     /* ----------------------- */
 
@@ -194,6 +197,7 @@
       height: 7px;
       border-radius: 50%;
       background: var(--green);
+      display: block;
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -639,3 +643,5 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
+```
