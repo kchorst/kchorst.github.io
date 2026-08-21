@@ -53,7 +53,9 @@ const repoCategories = {
   'LLM-Parametizer': ['llm-related'],
   'audio-prep-suite': ['audio-video'],
   'youtube-movie-creator-toolkit': ['audio-video'],
-  'MIDI-Performer': ['midi-related']
+  'MIDI-Performer': ['midi-related'],
+  'MIDI-Remixer': ['midi-related'],
+  'MIDI-Library-Manager': ['midi-related']
 };
 
 // Repository images from kchorst repository assets
