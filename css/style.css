@@ -195,13 +195,25 @@ p:last-child { margin-bottom: 0; }
   width: 100%;
 }
 .hero h1 {
-  color: #EDF4FB;
+  color: #FFFFFF;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 6vw, 4rem);
   line-height: 1.15;
   font-weight: 700;
   margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
+}
+.hero-subtitle {
+  color: #EDF4FB;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.hero-bio {
+  color: #C5D8ED;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 .hero-eyebrow {
   font-family: var(--font-display);
