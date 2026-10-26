@@ -2,10 +2,6 @@
    KCHORST.COM — Main JS
    ============================================================ */
 
-// ============================================================
-// GITHUB REPOSITORIES
-// ============================================================
-
 // Category definitions with descriptions
 const categories = {
   'browser-extensions': {
@@ -35,14 +31,15 @@ const categories = {
   }
 };
 
-// Repository category mapping (repos can appear in multiple categories)
+// Complete Repository Category Mapping
 const repoCategories = {
   'Ai-Chat-Navigator': ['browser-extensions', 'llm-related'],
   'LLM-Tester': ['browser-extensions', 'llm-related'],
   'LLM-Radar': ['llm-related'],
+  'LLM-Parametizer': ['llm-related'],
+  'tps-meter': ['browser-extensions', 'llm-related'],
   'Sentinel-Plus': ['browser-extensions'],
   'Textify': ['browser-extensions'],
-  'tps-meter': ['browser-extensions', 'llm-related'],
   'Web-Time-Machine': ['browser-extensions'],
   'alphabets': ['standalone-apps'],
   'kanji': ['standalone-apps'],
@@ -50,20 +47,29 @@ const repoCategories = {
   'mylangapp': ['standalone-apps'],
   'mylangapp-web': ['standalone-apps'],
   'SLPR-The-Sleep-App': ['standalone-apps'],
-  'LLM-Parametizer': ['llm-related'],
   'audio-prep-suite': ['audio-video'],
   'youtube-movie-creator-toolkit': ['audio-video'],
-  'MIDI-Performer': ['midi-related']
+  'MIDI-Performer': ['midi-related'],
+  'MIDI-Remixer': ['midi-related'],
+  'MIDI-Library-Manager': ['midi-related']
 };
 
-// Repository images from kchorst repository assets
+// Verified Primary Asset Mappings matching exact asset filenames
 const repoImages = {
+  'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png',
+  'LLM-Radar': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%201.jpg',
+  'LLM-Tester': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%201.jpg',
+  'LLM-Parametizer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM-Parametizer.png',
+  'alphabets': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%201.png',
+  'SLPR-The-Sleep-App': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%201.png',
+  'audio-prep-suite': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Audio%20Prep%20Suite%201.jpg',
+  'MIDI-Library-Manager': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Library%20Manager%201.jpg',
+  'MIDI-Remixer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%201.jpg',
+  'MIDI-Performer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI-Performer.png',
+  'Sentinel-Plus': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Sentinel-Plus.png',
   'Textify': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/textify.png',
   'Web-Time-Machine': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/web-time-machine.png',
-  'LLM-Parametizer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM-Parametizer.png',
-  'Sentinel-Plus': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Sentinel-Plus.png',
-  'MIDI-Performer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI-Performer.png',
-  'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png'
+  'youtube-movie-creator-toolkit': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%201.jpg'
 };
 
 // Repositories to exclude (portfolio/meta)
@@ -72,23 +78,15 @@ const excludedRepos = ['kchorst', 'kchorst.github.io'];
 // Fetch GitHub repositories
 async function fetchGitHubRepos() {
   var username = 'kchorst';
-  
   try {
     var response = await fetch('https://api.github.com/users/' + username + '/repos?per_page=100', {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json'
-      }
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
     });
-    
     if (!response.ok) throw new Error('Failed to fetch repositories');
-    
     var repos = await response.json();
-    
-    // Filter out excluded repos and sort by updated date
     var filteredRepos = repos
       .filter(function(repo) { return !excludedRepos.includes(repo.name); })
       .sort(function(a, b) { return new Date(b.updated_at) - new Date(a.updated_at); });
-    
     return filteredRepos;
   } catch (error) {
     console.error('Error fetching repos:', error);
@@ -99,13 +97,9 @@ async function fetchGitHubRepos() {
 // Group repositories by category
 function groupReposByCategory(repos) {
   var grouped = {};
-  
-  // Initialize all categories
   Object.keys(categories).forEach(function(key) {
     grouped[key] = [];
   });
-  
-  // Assign repos to categories
   repos.forEach(function(repo) {
     var assignedCategories = repoCategories[repo.name] || [];
     assignedCategories.forEach(function(category) {
@@ -114,7 +108,6 @@ function groupReposByCategory(repos) {
       }
     });
   });
-  
   return grouped;
 }
 
@@ -158,7 +151,6 @@ function renderCategorizedRepos(groupedRepos) {
   }
   
   var html = '';
-  
   Object.keys(categories).forEach(function(categoryKey) {
     var category = categories[categoryKey];
     var repos = groupedRepos[categoryKey];
@@ -173,7 +165,6 @@ function renderCategorizedRepos(groupedRepos) {
         '<div class="repo-grid">' + reposHtml + '</div></div>';
     }
   });
-  
   container.innerHTML = html;
 }
 
@@ -183,7 +174,6 @@ async function initGitHubRepos() {
   if (!container) return;
   
   container.innerHTML = '<p class="loading-text">Loading repositories...</p>';
-  
   var repos = await fetchGitHubRepos();
   var groupedRepos = groupReposByCategory(repos);
   renderCategorizedRepos(groupedRepos);
