@@ -2,7 +2,6 @@
    KCHORST.COM — Main JS with Multi-Image Carousel & Lightbox
    ============================================================ */
 
-// Category definitions with descriptions
 const categories = {
   'browser-extensions': {
     name: 'Browser Extensions',
@@ -31,7 +30,6 @@ const categories = {
   }
 };
 
-// Complete Repository Category Mapping
 const repoCategories = {
   'Ai-Chat-Navigator': ['browser-extensions', 'llm-related'],
   'LLM-Tester': ['browser-extensions', 'llm-related'],
@@ -54,10 +52,18 @@ const repoCategories = {
   'MIDI-Library-Manager': ['midi-related']
 };
 
-// Asset Mappings (Supports single URL strings OR Arrays for Multi-Image Carousels)
 const repoImages = {
   'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png',
-  'LLM-Radar': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%201.jpg',
+  'LLM-Radar': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%202.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%203.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%204.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%205.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%206.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%207.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%208.png'
+  ],
   'LLM-Tester': [
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%201.jpg',
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%202.jpg'
@@ -90,19 +96,17 @@ const repoImages = {
   'Textify': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/textify.png',
   'Web-Time-Machine': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/web-time-machine.png',
   'youtube-movie-creator-toolkit': [
-    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%201.jpg',
-    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%202.jpg'
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube-movie-creator-toolkit%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube-movie-creator-toolkit%202.jpg'
   ]
 };
 
-// Global Store for Lightbox State
 let currentLightboxImages = [];
 let currentLightboxIndex = 0;
 let currentLightboxTitle = '';
 
 const excludedRepos = ['kchorst', 'kchorst.github.io'];
 
-// Fetch GitHub repositories
 async function fetchGitHubRepos() {
   var username = 'kchorst';
   try {
@@ -132,7 +136,6 @@ function groupReposByCategory(repos) {
   return grouped;
 }
 
-// Render Repository Card with Carousel Support
 function renderRepoCard(repo, categoryKey) {
   var description = repo.description || 'No description available.';
   var language = repo.language || 'Various';
@@ -183,7 +186,6 @@ function renderRepoCard(repo, categoryKey) {
     '<span class="repo-updated">Updated ' + updated + '</span></div></div>';
 }
 
-// Carousel Interactions
 function setCarouselSlide(cardId, targetIndex) {
   const container = document.getElementById(cardId);
   if (!container) return;
@@ -212,7 +214,6 @@ function prevCarouselSlide(cardId) {
   setCarouselSlide(cardId, current - 1);
 }
 
-// Fullscreen Lightbox Functions
 function openLightbox(title, index, encodedImages) {
   currentLightboxTitle = title;
   currentLightboxImages = JSON.parse(decodeURIComponent(encodedImages));

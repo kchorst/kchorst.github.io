@@ -1,6 +1,5 @@
 /* ============================================================
    KCHORST.COM — Design System & Lightbox/Carousel Engine
-   Palette: Navy / Teal-Blue / Amber / Light Blue-White
    ============================================================ */
 
 :root {
@@ -32,7 +31,6 @@
   --max-w: 1100px;
 }
 
-/* RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -45,19 +43,15 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
-/* LAYOUT */
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-.section {
-  padding: 5rem 0;
-}
+.section { padding: 5rem 0; }
 .section-light { background: var(--bg-light); }
 .section-white { background: var(--bg-white); }
 
-/* FLOATING NAV */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -119,7 +113,6 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-cta:hover { background: var(--teal); }
 
-/* HERO SECTION */
 .hero {
   min-height: 90vh;
   display: flex;
@@ -180,10 +173,7 @@ a { color: inherit; text-decoration: none; }
   mask-image: radial-gradient(ellipse 80% 60% at 70% 50%, black 20%, transparent 80%);
 }
 
-/* SECTION TITLES */
-.section-title-wrapper {
-  margin-bottom: 3rem;
-}
+.section-title-wrapper { margin-bottom: 3rem; }
 .section-label {
   font-family: var(--font-display);
   font-size: 0.75rem;
@@ -201,31 +191,12 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
-.section-intro {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-}
+.section-intro { font-size: 1.1rem; color: var(--text-muted); }
 
-/* REPO GRID & CARDS */
-.loading-text {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 1rem;
-  padding: 3rem;
-}
-.repo-category {
-  margin-bottom: 4rem;
-}
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-.category-icon {
-  font-size: 1.75rem;
-  line-height: 1;
-}
+.loading-text { text-align: center; color: var(--text-muted); font-size: 1rem; padding: 3rem; }
+.repo-category { margin-bottom: 4rem; }
+.category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.category-icon { font-size: 1.75rem; line-height: 1; }
 .category-title {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -260,7 +231,6 @@ a { color: inherit; text-decoration: none; }
   border-color: var(--teal);
 }
 
-/* MULTI-IMAGE CAROUSEL CONTAINER */
 .repo-image-container {
   position: relative;
   width: 100%;
@@ -282,12 +252,8 @@ a { color: inherit; text-decoration: none; }
   transition: opacity 0.35s ease;
   pointer-events: none;
 }
-.carousel-slide.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+.carousel-slide.active { opacity: 1; pointer-events: auto; }
 
-/* CAROUSEL CONTROLS */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -307,12 +273,8 @@ a { color: inherit; text-decoration: none; }
   opacity: 0;
   transition: opacity 0.2s ease, background 0.2s ease;
 }
-.repo-image-container:hover .carousel-btn {
-  opacity: 1;
-}
-.carousel-btn:hover {
-  background: var(--teal);
-}
+.repo-image-container:hover .carousel-btn { opacity: 1; }
+.carousel-btn:hover { background: var(--teal); }
 .carousel-btn.prev { left: 8px; }
 .carousel-btn.next { right: 8px; }
 
@@ -333,18 +295,9 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
-.carousel-dot.active {
-  background: var(--amber);
-  transform: scale(1.25);
-}
+.carousel-dot.active { background: var(--amber); transform: scale(1.25); }
 
-/* REPO METADATA & LINKS */
-.repo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
+.repo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
 .repo-name {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -368,10 +321,7 @@ a { color: inherit; text-decoration: none; }
   color: white;
   transform: translate(2px, -2px);
 }
-.repo-arrow {
-  font-size: 1rem;
-  line-height: 1;
-}
+.repo-arrow { font-size: 1rem; line-height: 1; }
 .repo-description {
   font-size: 0.925rem;
   color: var(--text-body);
@@ -401,7 +351,6 @@ a { color: inherit; text-decoration: none; }
 .repo-stats { font-family: var(--font-mono); }
 .repo-updated { font-family: var(--font-mono); margin-left: auto; }
 
-/* LIGHTBOX MODAL */
 .lightbox-modal {
   position: fixed;
   inset: 0;
@@ -412,10 +361,7 @@ a { color: inherit; text-decoration: none; }
   opacity: 1;
   transition: opacity 0.25s ease;
 }
-.lightbox-modal.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+.lightbox-modal.hidden { opacity: 0; pointer-events: none; }
 .lightbox-overlay {
   position: absolute;
   inset: 0;
@@ -431,11 +377,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
 }
-.lightbox-image-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.lightbox-image-wrapper { display: flex; flex-direction: column; align-items: center; }
 #lightbox-img {
   max-width: 85vw;
   max-height: 80vh;
@@ -482,7 +424,6 @@ a { color: inherit; text-decoration: none; }
 .lightbox-prev { left: -60px; }
 .lightbox-next { right: -60px; }
 
-/* FOOTER */
 .site-footer {
   background: var(--navy);
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -496,7 +437,6 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-pill { padding: 0.5rem 0.75rem 0.5rem 1rem; }
