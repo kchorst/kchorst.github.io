@@ -54,7 +54,7 @@ const repoCategories = {
   'MIDI-Library-Manager': ['midi-related']
 };
 
-// Verified Primary Asset Mappings matching exact asset filenames
+// Complete & Verified Asset Mappings for ALL Repositories
 const repoImages = {
   'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png',
   'LLM-Radar': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%201.jpg',
