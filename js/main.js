@@ -1,5 +1,5 @@
 /* ============================================================
-   KCHORST.COM — Main JS
+   KCHORST.COM — Main JS with Multi-Image Carousel & Lightbox
    ============================================================ */
 
 // Category definitions with descriptions
@@ -54,25 +54,52 @@ const repoCategories = {
   'MIDI-Library-Manager': ['midi-related']
 };
 
-// Complete & Verified Asset Mappings for ALL Repositories
+// Asset Mappings (Supports single URL strings OR Arrays for Multi-Image Carousels)
 const repoImages = {
   'Ai-Chat-Navigator': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/AI-Chat-Navigator.png',
   'LLM-Radar': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Radar%201.jpg',
-  'LLM-Tester': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%201.jpg',
+  'LLM-Tester': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM%20Tester%202.jpg'
+  ],
   'LLM-Parametizer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/LLM-Parametizer.png',
-  'alphabets': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%201.png',
-  'SLPR-The-Sleep-App': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%201.png',
+  'alphabets': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%201.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%202.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%203.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%204.png'
+  ],
+  'SLPR-The-Sleep-App': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%201.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%202.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%203.png'
+  ],
   'audio-prep-suite': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Audio%20Prep%20Suite%201.jpg',
-  'MIDI-Library-Manager': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Library%20Manager%201.jpg',
-  'MIDI-Remixer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%201.jpg',
+  'MIDI-Library-Manager': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Library%20Manager%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Library%20Manager%202.jpg'
+  ],
+  'MIDI-Remixer': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%202.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%203.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI%20Remixer%204.jpg'
+  ],
   'MIDI-Performer': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/MIDI-Performer.png',
   'Sentinel-Plus': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Sentinel-Plus.png',
   'Textify': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/textify.png',
   'Web-Time-Machine': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/web-time-machine.png',
-  'youtube-movie-creator-toolkit': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%201.jpg'
+  'youtube-movie-creator-toolkit': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%201.jpg',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/youtube%20movie%20creator%20toolkit%202.jpg'
+  ]
 };
 
-// Repositories to exclude (portfolio/meta)
+// Global Store for Lightbox State
+let currentLightboxImages = [];
+let currentLightboxIndex = 0;
+let currentLightboxTitle = '';
+
 const excludedRepos = ['kchorst', 'kchorst.github.io'];
 
 // Fetch GitHub repositories
@@ -84,48 +111,66 @@ async function fetchGitHubRepos() {
     });
     if (!response.ok) throw new Error('Failed to fetch repositories');
     var repos = await response.json();
-    var filteredRepos = repos
+    return repos
       .filter(function(repo) { return !excludedRepos.includes(repo.name); })
       .sort(function(a, b) { return new Date(b.updated_at) - new Date(a.updated_at); });
-    return filteredRepos;
   } catch (error) {
     console.error('Error fetching repos:', error);
     return [];
   }
 }
 
-// Group repositories by category
 function groupReposByCategory(repos) {
   var grouped = {};
-  Object.keys(categories).forEach(function(key) {
-    grouped[key] = [];
-  });
+  Object.keys(categories).forEach(function(key) { grouped[key] = []; });
   repos.forEach(function(repo) {
     var assignedCategories = repoCategories[repo.name] || [];
     assignedCategories.forEach(function(category) {
-      if (grouped[category]) {
-        grouped[category].push(repo);
-      }
+      if (grouped[category]) grouped[category].push(repo);
     });
   });
   return grouped;
 }
 
-// Render a single repository card
-function renderRepoCard(repo) {
+// Render Repository Card with Carousel Support
+function renderRepoCard(repo, categoryKey) {
   var description = repo.description || 'No description available.';
   var language = repo.language || 'Various';
   var stars = repo.stargazers_count;
   var forks = repo.forks_count;
   var updated = new Date(repo.updated_at).toLocaleDateString();
-  var imageUrl = repoImages[repo.name] || null;
+  
+  var imageData = repoImages[repo.name] || null;
+  var images = Array.isArray(imageData) ? imageData : (imageData ? [imageData] : []);
   
   var imageHtml = '';
-  if (imageUrl) {
-    imageHtml = '<div class="repo-image"><img src="' + imageUrl + '" alt="' + repo.name + ' screenshot" loading="lazy" /></div>';
+  if (images.length > 0) {
+    const cardId = 'carousel-' + categoryKey + '-' + repo.name.replace(/[^a-zA-Z0-9]/g, '-');
+    const encodedImages = encodeURIComponent(JSON.stringify(images));
+    
+    var slidesHtml = images.map(function(url, idx) {
+      var activeClass = idx === 0 ? ' active' : '';
+      return '<img src="' + url + '" class="carousel-slide' + activeClass + '" alt="' + repo.name + ' screenshot ' + (idx + 1) + '" loading="lazy" onclick="openLightbox(\'' + repo.name + '\', ' + idx + ', \'' + encodedImages + '\')" />';
+    }).join('');
+
+    var controlsHtml = '';
+    if (images.length > 1) {
+      var dotsHtml = images.map(function(_, idx) {
+        var activeDot = idx === 0 ? ' active' : '';
+        return '<span class="carousel-dot' + activeDot + '" onclick="event.stopPropagation(); setCarouselSlide(\'' + cardId + '\', ' + idx + ')"></span>';
+      }).join('');
+
+      controlsHtml = '<button class="carousel-btn prev" onclick="event.stopPropagation(); prevCarouselSlide(\'' + cardId + '\')">&#10094;</button>' +
+                     '<button class="carousel-btn next" onclick="event.stopPropagation(); nextCarouselSlide(\'' + cardId + '\')">&#10095;</button>' +
+                     '<div class="carousel-dots">' + dotsHtml + '</div>';
+    }
+
+    imageHtml = '<div class="repo-image-container" id="' + cardId + '" data-current="0" data-total="' + images.length + '">' +
+                  slidesHtml + controlsHtml +
+                '</div>';
   }
-  
-  var cardHtml = '<div class="repo-card">' + imageHtml + 
+
+  return '<div class="repo-card">' + imageHtml + 
     '<div class="repo-header">' +
     '<h3 class="repo-name">' + repo.name + '</h3>' +
     '<a href="' + repo.html_url + '" class="repo-link" target="_blank" rel="noopener">' +
@@ -136,11 +181,77 @@ function renderRepoCard(repo) {
     '<span class="repo-stats">★ ' + stars + '</span>' +
     '<span class="repo-stats">🍴 ' + forks + '</span>' +
     '<span class="repo-updated">Updated ' + updated + '</span></div></div>';
-  
-  return cardHtml;
 }
 
-// Render all categories and their repositories
+// Carousel Interactions
+function setCarouselSlide(cardId, targetIndex) {
+  const container = document.getElementById(cardId);
+  if (!container) return;
+  const total = parseInt(container.getAttribute('data-total'), 10);
+  const index = (targetIndex + total) % total;
+  
+  container.setAttribute('data-current', index);
+  const slides = container.querySelectorAll('.carousel-slide');
+  const dots = container.querySelectorAll('.carousel-dot');
+  
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+
+function nextCarouselSlide(cardId) {
+  const container = document.getElementById(cardId);
+  if (!container) return;
+  const current = parseInt(container.getAttribute('data-current'), 10);
+  setCarouselSlide(cardId, current + 1);
+}
+
+function prevCarouselSlide(cardId) {
+  const container = document.getElementById(cardId);
+  if (!container) return;
+  const current = parseInt(container.getAttribute('data-current'), 10);
+  setCarouselSlide(cardId, current - 1);
+}
+
+// Fullscreen Lightbox Functions
+function openLightbox(title, index, encodedImages) {
+  currentLightboxTitle = title;
+  currentLightboxImages = JSON.parse(decodeURIComponent(encodedImages));
+  currentLightboxIndex = index;
+  
+  updateLightbox();
+  const modal = document.getElementById('lightbox-modal');
+  modal.classList.remove('hidden');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const modal = document.getElementById('lightbox-modal');
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+  const img = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  
+  img.src = currentLightboxImages[currentLightboxIndex];
+  caption.textContent = currentLightboxTitle + ' (' + (currentLightboxIndex + 1) + ' / ' + currentLightboxImages.length + ')';
+}
+
+function nextLightboxImage() {
+  if (currentLightboxImages.length <= 1) return;
+  currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+  updateLightbox();
+}
+
+function prevLightboxImage() {
+  if (currentLightboxImages.length <= 1) return;
+  currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+  updateLightbox();
+}
+
 function renderCategorizedRepos(groupedRepos) {
   const container = document.getElementById('github-repos-container');
   if (!container) return;
@@ -156,7 +267,7 @@ function renderCategorizedRepos(groupedRepos) {
     var repos = groupedRepos[categoryKey];
     
     if (repos.length > 0) {
-      var reposHtml = repos.map(renderRepoCard).join('');
+      var reposHtml = repos.map(repo => renderRepoCard(repo, categoryKey)).join('');
       html += '<div class="repo-category">' +
         '<div class="category-header">' +
         '<span class="category-icon">' + category.icon + '</span>' +
@@ -168,7 +279,6 @@ function renderCategorizedRepos(groupedRepos) {
   container.innerHTML = html;
 }
 
-// Initialize GitHub repositories section
 async function initGitHubRepos() {
   var container = document.getElementById('github-repos-container');
   if (!container) return;
@@ -177,9 +287,25 @@ async function initGitHubRepos() {
   var repos = await fetchGitHubRepos();
   var groupedRepos = groupReposByCategory(repos);
   renderCategorizedRepos(groupedRepos);
+  setupLightboxListeners();
 }
 
-// Initialize on page load
+function setupLightboxListeners() {
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-overlay').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', prevLightboxImage);
+  document.getElementById('lightbox-next').addEventListener('click', nextLightboxImage);
+  
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal.classList.contains('hidden')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextLightboxImage();
+    if (e.key === 'ArrowLeft') prevLightboxImage();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initGitHubRepos();
 });
