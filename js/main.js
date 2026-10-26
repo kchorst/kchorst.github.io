@@ -75,6 +75,26 @@ const repoImages = {
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%203.png',
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%204.png'
   ],
+  'kanji': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji1.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji2.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji3.png'
+  ],
+  'kanji-web': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji1.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji2.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji3.png'
+  ],
+  'mylangapp': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp1.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp2.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp3.png'
+  ],
+  'mylangapp-web': [
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp1.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp2.png',
+    'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Mylangapp3.png'
+  ],
   'SLPR-The-Sleep-App': [
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%201.png',
     'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/SLPR%202.png',
