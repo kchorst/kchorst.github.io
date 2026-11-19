@@ -67,6 +67,8 @@ const repoCategories = {
 
 // Repository images from kchorst repository assets
 const repoImages = {
+  'VisaBrowser': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/VisaBrowser.jpg',
+  'Travel-Prep': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Travel-Prep.jpg',
   'alphabets': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/Alphabets%201.png',
   'kanji': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji1.png',
   'kanji-web': 'https://raw.githubusercontent.com/kchorst/kchorst/main/assets/kanji1.png',
