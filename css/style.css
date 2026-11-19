@@ -10,7 +10,7 @@
   --text-secondary: #8b949e;
   --accent-color: #58a6ff;
   --accent-hover: #1f6feb;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -158,7 +158,7 @@ header {
 /* REPO GRID & CARDS */
 .repo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1.5rem;
 }
 
@@ -255,4 +255,45 @@ footer {
   color: var(--text-secondary);
   font-size: 0.85rem;
   text-align: center;
+}
+/* Shared layout used by the published page. */
+:root {
+  --text-body: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --border: var(--border-color);
+  --radius-pill: 999px;
+}
+.container, .nav-pill {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+.site-header { padding-inline: 0; }
+.nav-pill {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.nav-logo { font-family: var(--font-mono); font-weight: 600; }
+.nav-links { margin-left: auto; }
+.nav-logo, .nav-cta, .contact-row a { color: var(--accent-color); text-decoration: none; }
+.nav-cta { border: 1px solid var(--border-color); border-radius: 999px; padding: .5rem 1rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-block: .5rem; }
+.hero-eyebrow, .section-label { color: var(--text-secondary); }
+.section { padding-block: 2.5rem; scroll-margin-top: 7rem; }
+.section-intro { color: var(--text-secondary); }
+.section-white { border-top: 1px solid var(--border-color); }
+#contact .container > p { max-width: 800px; }
+.site-footer { max-width: none; padding-inline: 0; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
+.hidden { display: none; }
+@media (max-width: 600px) {
+  .container, .nav-pill, .hero { padding-inline: 1.25rem; }
+  .nav-links a { margin-left: 0; }
+  .nav-links { display: flex; gap: 1rem; }
+  .nav-pill > .nav-cta { display: none; }
+  .hero { margin-top: 2.5rem; }
+  .repo-meta { gap: .75rem; }
 }
