@@ -50,6 +50,7 @@ const repoCategories = {
   'mylangapp': ['standalone-apps'],
   'mylangapp-web': ['standalone-apps'],
   'SLPR-The-Sleep-App': ['standalone-apps'],
+  'VisaBrowser': ['standalone-apps'],
   'LLM-Parametizer': ['llm-related'],
   'audio-prep-suite': ['audio-video'],
   'youtube-movie-creator-toolkit': ['audio-video'],
@@ -122,7 +123,9 @@ function groupReposByCategory(repos) {
 
 // Render a single repository card
 function renderRepoCard(repo) {
-  var description = repo.description || 'No description available.';
+  var description = repo.name === 'VisaBrowser'
+    ? 'Mobile-friendly trip planner that compares tourist visa rules and entry requirements by passport and destination, with source links and offline access.'
+    : repo.description || 'No description available.';
   var language = repo.language || 'Various';
   var stars = repo.stargazers_count;
   var forks = repo.forks_count;
